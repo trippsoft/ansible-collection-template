@@ -1,7 +1,7 @@
 <!-- BEGIN_ANSIBLE_DOCS -->
 
 # Ansible Role: trippsc2.template.windows
-Version: 1.2.1
+Version: 1.3.0
 
 This role seals a Windows machine for use as a template.
 
@@ -29,6 +29,7 @@ This role seals a Windows machine for use as a template.
 | win_ssl_ca_certs | <p>A list of SSL CA certificates to install.</p> | list of '' | no |  | [] |
 | win_use_bleachbit | <p>Whether to use BleachBit to clean up the machine.</p> | bool | no |  | True |
 | win_disable_mouse_acceleration | <p>Whether to disable mouse acceleration.</p> | bool | no |  | True |
+| win_remove_appx_packages_for_sysprep | <p>Whether to remove AppX packages to allow for sysprep.</p> | bool | no |  | True |
 
 
 ## License

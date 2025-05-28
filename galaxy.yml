@@ -1,7 +1,7 @@
 ---
 namespace: trippsc2
 name: template
-version: 1.2.1
+version: 1.3.0
 readme: README.md
 authors:
   - Jim Tarpley (@trippsc2)
@@ -15,9 +15,9 @@ tags:
   - windows
 
 dependencies:
-  ansible.windows: ">=1.0.0"
+  ansible.windows: ">=2.7.0"
   chocolatey.chocolatey: ">=1.0.0"
-  community.windows: ">=1.0.0"
+  community.windows: ">=2.7.0"
 
 repository: https://github.com/trippsc2/ansible-collection-template.git
 

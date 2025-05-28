@@ -5,3 +5,4 @@ win_add_ssh_trusted_ca_cert: false
 win_ssl_ca_certs: []
 win_use_bleachbit: true
 win_disable_mouse_acceleration: true
+win_remove_appx_packages_for_sysprep: true

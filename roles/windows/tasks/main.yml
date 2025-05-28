@@ -18,7 +18,7 @@
         state: present
 
     - name: Ensure vagrant user profile is present
-      community.windows.win_user_profile:
+      ansible.windows.win_user_profile:
         username: vagrant
         name: vagrant
         state: present
@@ -219,3 +219,23 @@
         name: MouseThreshold2
         data: '0'
         type: string
+
+- name: Remove AppX packages that hold up sysprep
+  when:
+    - win_remove_appx_packages_for_sysprep
+  ansible.windows.win_powershell:
+    script: |
+      $Ansible.Changed = $false
+      $matchingPackages = [Array](Get-AppxPackage | Where-Object {$_.InstallLocation -match 'C:\\Program Files'})
+      $Ansible.Result = @{RemovedPackages = @()}
+
+      foreach ($package in $matchingPackages) {
+        try {
+          Remove-AppxPackage $package -ErrorAction Stop
+          $Ansible.Changed = $true
+          $Ansible.Result.RemovedPackages += $package.Name
+        } catch {
+          $Ansible.Failed = $true
+        }
+      }
+  ignore_errors: true

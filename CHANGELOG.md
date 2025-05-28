@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2025-05-28
+
+### Role - windows
+
+- Added step to remove AppX packages that prevent sysprep.
+- Changed references to **community.windows.win_user_profile** to **ansible.windows.win_user_profile**.
+
 ## [1.2.1] - 2025-05-16
 
 ### Role - debian
