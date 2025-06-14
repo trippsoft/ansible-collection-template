@@ -1,0 +1,77 @@
+---
+name: Generate Role Docs
+'on':
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+    paths:
+      - galaxy.yml
+      - roles/bleachbit/.aar_doc.yml
+      - roles/bleachbit/README.md
+      - roles/bleachbit/meta/argument_specs.yml
+      - roles/bleachbit/meta/main.yml
+      - roles/debian/.aar_doc.yml
+      - roles/debian/README.md
+      - roles/debian/meta/argument_specs.yml
+      - roles/debian/meta/main.yml
+      - roles/rhel/.aar_doc.yml
+      - roles/rhel/README.md
+      - roles/rhel/meta/argument_specs.yml
+      - roles/rhel/meta/main.yml
+      - roles/ubuntu/.aar_doc.yml
+      - roles/ubuntu/README.md
+      - roles/ubuntu/meta/argument_specs.yml
+      - roles/ubuntu/meta/main.yml
+      - roles/windows/.aar_doc.yml
+      - roles/windows/README.md
+      - roles/windows/meta/argument_specs.yml
+      - roles/windows/meta/main.yml
+defaults:
+  run:
+    working-directory: 'trippsc2.template'
+jobs:
+  docs_bleachbit:
+    name: Generate bleachbit role documentation
+    permissions:
+      contents: write
+    uses: trippsoft/github-actions/.github/workflows/role-docs.yml@main
+    with:
+      working_directory: 'trippsc2.template'
+      role_name: 'bleachbit'
+  docs_debian:
+    name: Generate debian role documentation
+    permissions:
+      contents: write
+    needs: docs_bleachbit
+    uses: trippsoft/github-actions/.github/workflows/role-docs.yml@main
+    with:
+      working_directory: 'trippsc2.template'
+      role_name: 'debian'
+  docs_rhel:
+    name: Generate rhel role documentation
+    permissions:
+      contents: write
+    needs: docs_debian
+    uses: trippsoft/github-actions/.github/workflows/role-docs.yml@main
+    with:
+      working_directory: 'trippsc2.template'
+      role_name: 'rhel'
+  docs_ubuntu:
+    name: Generate ubuntu role documentation
+    permissions:
+      contents: write
+    needs: docs_rhel
+    uses: trippsoft/github-actions/.github/workflows/role-docs.yml@main
+    with:
+      working_directory: 'trippsc2.template'
+      role_name: 'ubuntu'
+  docs_windows:
+    name: Generate windows role documentation
+    permissions:
+      contents: write
+    needs: docs_ubuntu
+    uses: trippsoft/github-actions/.github/workflows/role-docs.yml@main
+    with:
+      working_directory: 'trippsc2.template'
+      role_name: 'windows'

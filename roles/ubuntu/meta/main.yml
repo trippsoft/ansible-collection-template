@@ -14,6 +14,5 @@ galaxy_info:
       versions:
         - noble
         - jammy
-        - focal
 
 dependencies: []
