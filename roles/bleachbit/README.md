@@ -1,7 +1,7 @@
 <!-- BEGIN_ANSIBLE_DOCS -->
 
 # Ansible Role: trippsc2.template.bleachbit
-Version: 1.3.0
+Version: 1.3.1
 
 This role runs Bleachbit from a portable executable on Windows systems.
 
@@ -9,7 +9,7 @@ This role runs Bleachbit from a portable executable on Windows systems.
 
 | Platform | Versions |
 | -------- | -------- |
-| Windows | <ul><li>2019</li><li>2022</li></ul> |
+| Windows | <ul><li>2025</li><li>2022</li><li>2019</li></ul> |
 
 ## Dependencies
 
