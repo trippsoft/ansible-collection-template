@@ -1,7 +1,7 @@
 <!-- BEGIN_ANSIBLE_DOCS -->
 
 # Ansible Role: trippsc2.template.ubuntu
-Version: 1.3.1
+Version: 1.4.0
 
 This role seals an Ubuntu machine for use as a template.
 
