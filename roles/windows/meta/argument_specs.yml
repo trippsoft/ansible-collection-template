@@ -49,12 +49,6 @@ argument_specs:
         default: true
         description:
           - Whether to use BleachBit to clean up the machine.
-      win_disable_mouse_acceleration:
-        type: bool
-        required: false
-        default: true
-        description:
-          - Whether to disable mouse acceleration.
       win_remove_appx_packages_for_sysprep:
         type: bool
         required: false

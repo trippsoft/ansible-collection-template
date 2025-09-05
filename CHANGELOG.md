@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2025-09-05
+
+### Role - windows
+
+- Removed step to configure mouse acceleration, which was ineffective.
+- Adjusted script to remove AppX packages that hold up sysprep.
+
 ## [1.3.1] - 2025-06-11
 
 ### Collection
