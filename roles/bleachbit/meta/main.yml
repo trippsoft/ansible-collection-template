@@ -9,11 +9,11 @@ galaxy_info:
   min_ansible_version: '2.16'
 
   platforms:
-  - name: Windows
-    versions:
-      - '2025'
-      - '2022'
-      - '2019'
+    - name: Windows
+      versions:
+        - '2025'
+        - '2022'
+        - '2019'
 
 collections:
   - ansible.windows

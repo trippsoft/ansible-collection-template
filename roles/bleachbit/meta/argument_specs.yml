@@ -9,7 +9,7 @@ argument_specs:
       bleachbit_options:
         type: list
         required: false
-        default: 
+        default:
           - deepscan.backup
           - deepscan.ds_store
           - deepscan.thumbs_db

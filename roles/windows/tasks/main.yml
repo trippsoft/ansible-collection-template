@@ -1,3 +1,4 @@
+---
 - name: Create vagrant user
   when:
     - win_is_vagrant
@@ -32,7 +33,7 @@
       ansible.windows.win_copy:
         src: authorized_keys
         dest: C:\Users\vagrant\.ssh\authorized_keys
-    
+
     - name: Ensure authorized_keys file does not inherit ACE
       ansible.windows.win_acl_inheritance:
         path: C:\Users\vagrant\.ssh\authorized_keys
@@ -71,7 +72,7 @@
       ansible.windows.win_copy:
         src: "{{ win_ssh_trusted_ca_cert_path }}"
         dest: C:\ProgramData\ssh\trusted-user-ca-key.pem
-    
+
     - name: Configure SSH to use trusted CA certificate
       community.windows.win_lineinfile:
         path: C:\ProgramData\ssh\sshd_config
@@ -91,7 +92,7 @@
     path: "{{ item.dest }}"
     store_location: LocalMachine
     store_name: "{{ item.store_name }}"
-    state: present  
+    state: present
 
 - name: List all files in the directories to be cleared
   ansible.windows.win_find:
@@ -116,7 +117,7 @@
   ignore_errors: true
   register: _win_temp_directories
 
-- name: Delete all files in the directories
+- name: Delete all files in the directories # noqa ignore-errors
   loop: "{{ _win_temp_files.files }}"
   ansible.windows.win_file:
     path: "{{ item.path }}"
@@ -124,11 +125,8 @@
   ignore_errors: true
   loop_control:
     label: "{{ item.path }}"
-  tags:
-    - always
-    - skip_ansible_lint
 
-- name: Delete all sub-directories in the directories
+- name: Delete all sub-directories in the directories # noqa ignore-errors
   loop: "{{ _win_temp_directories.files }}"
   ansible.windows.win_file:
     path: "{{ item.path }}"
@@ -136,9 +134,6 @@
   ignore_errors: true
   loop_control:
     label: "{{ item.path }}"
-  tags:
-    - always
-    - skip_ansible_lint
 
 - name: Clean-up Windows Update cache
   ansible.windows.win_command: dism.exe /online /cleanup-image /startcomponentcleanup /resetbase
@@ -181,7 +176,7 @@
       Get-EventLog -LogName * | ForEach { Clear-EventLog $_.Log }
   changed_when: true
 
-- name: Remove AppX packages that hold up sysprep
+- name: Remove AppX packages that hold up sysprep # noqa ignore-errors
   when:
     - win_remove_appx_packages_for_sysprep
   ansible.windows.win_powershell:

@@ -115,7 +115,7 @@
     recurse: true
   register: _tmp_contents
 
-- name: Remove all files
+- name: Remove all files # noqa ignore-errors
   loop: "{{ _tmp_contents.files }}"
   become: true
   ansible.builtin.file:
@@ -124,9 +124,6 @@
   ignore_errors: true
   loop_control:
     label: "{{ item.path }}"
-  tags:
-    - always
-    - skip_ansible_lint
 
 - name: Remove unnecessary files before shutdown
   loop:
@@ -157,13 +154,10 @@
     path: /root/.wget-hsts
     state: absent
 
-- name: Set history size to 0
+- name: Set history size to 0 # noqa command-instead-of-shell
   become: true
   ansible.builtin.shell: export HISTSIZE=0
   changed_when: true
-  tags:
-    - always
-    - skip_ansible_lint
 
 - name: Set hostname
   become: true
