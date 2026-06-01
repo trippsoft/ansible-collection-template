@@ -35,43 +35,138 @@ jobs:
     name: Generate bleachbit role documentation
     permissions:
       contents: write
-    uses: trippsoft/github-actions/.github/workflows/role-docs.yml@main
-    with:
-      working_directory: 'trippsc2.template'
-      role_name: 'bleachbit'
+    runs-on:
+      - self-hosted
+      - linux
+      - ansible
+      - x64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          path: trippsc2.template
+          ref: main
+      - name: Generate bleachbit role documentation
+        working-directory: 'trippsc2.template'
+        run: |
+          source ~/venv/ansible-2.16/bin/activate
+          cd ./roles/bleachbit
+          aar-doc . markdown
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+          git add README.md || /bin/true
+          git commit -m "Update bleachbit role documentation." || /bin/true
+          git push origin main
+          deactivate
   docs_debian:
     name: Generate debian role documentation
+    needs: docs_bleachbit
     permissions:
       contents: write
-    needs: docs_bleachbit
-    uses: trippsoft/github-actions/.github/workflows/role-docs.yml@main
-    with:
-      working_directory: 'trippsc2.template'
-      role_name: 'debian'
+    runs-on:
+      - self-hosted
+      - linux
+      - ansible
+      - x64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          path: trippsc2.template
+          ref: main
+      - name: Generate debian role documentation
+        working-directory: 'trippsc2.template'
+        run: |
+          source ~/venv/ansible-2.16/bin/activate
+          cd ./roles/debian
+          aar-doc . markdown
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+          git add README.md || /bin/true
+          git commit -m "Update debian role documentation." || /bin/true
+          git push origin main
+          deactivate
   docs_rhel:
     name: Generate rhel role documentation
+    needs: docs_debian
     permissions:
       contents: write
-    needs: docs_debian
-    uses: trippsoft/github-actions/.github/workflows/role-docs.yml@main
-    with:
-      working_directory: 'trippsc2.template'
-      role_name: 'rhel'
+    runs-on:
+      - self-hosted
+      - linux
+      - ansible
+      - x64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          path: trippsc2.template
+          ref: main
+      - name: Generate rhel role documentation
+        working-directory: 'trippsc2.template'
+        run: |
+          source ~/venv/ansible-2.16/bin/activate
+          cd ./roles/rhel
+          aar-doc . markdown
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+          git add README.md || /bin/true
+          git commit -m "Update rhel role documentation." || /bin/true
+          git push origin main
+          deactivate
   docs_ubuntu:
     name: Generate ubuntu role documentation
+    needs: docs_rhel
     permissions:
       contents: write
-    needs: docs_rhel
-    uses: trippsoft/github-actions/.github/workflows/role-docs.yml@main
-    with:
-      working_directory: 'trippsc2.template'
-      role_name: 'ubuntu'
+    runs-on:
+      - self-hosted
+      - linux
+      - ansible
+      - x64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          path: trippsc2.template
+          ref: main
+      - name: Generate ubuntu role documentation
+        working-directory: 'trippsc2.template'
+        run: |
+          source ~/venv/ansible-2.16/bin/activate
+          cd ./roles/ubuntu
+          aar-doc . markdown
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+          git add README.md || /bin/true
+          git commit -m "Update ubuntu role documentation." || /bin/true
+          git push origin main
+          deactivate
   docs_windows:
     name: Generate windows role documentation
+    needs: docs_ubuntu
     permissions:
       contents: write
-    needs: docs_ubuntu
-    uses: trippsoft/github-actions/.github/workflows/role-docs.yml@main
-    with:
-      working_directory: 'trippsc2.template'
-      role_name: 'windows'
+    runs-on:
+      - self-hosted
+      - linux
+      - ansible
+      - x64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          path: trippsc2.template
+          ref: main
+      - name: Generate windows role documentation
+        working-directory: 'trippsc2.template'
+        run: |
+          source ~/venv/ansible-2.16/bin/activate
+          cd ./roles/windows
+          aar-doc . markdown
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+          git add README.md || /bin/true
+          git commit -m "Update windows role documentation." || /bin/true
+          git push origin main
+          deactivate
