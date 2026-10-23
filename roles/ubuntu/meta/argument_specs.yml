@@ -6,11 +6,18 @@ argument_specs:
       - This role seals an Ubuntu machine for use as a template.
     author: Jim Tarpley (@trippsc2)
     options:
+      ubuntu_set_hostname:
+        type: bool
+        required: false
+        default: false
+        description:
+          - Whether to set the hostname.
       ubuntu_target_hostname:
         type: str
         required: true
         description:
           - The target hostname.
+          - Only needed if *ubuntu_set_hostname* is `true`.
       ubuntu_add_ssh_trusted_ca_cert:
         type: bool
         required: false

@@ -1,4 +1,13 @@
 ---
+- name: Validate that hostname is set
+  when:
+    - ubuntu_set_hostname
+  ansible.builtin.assert:
+    that:
+      - ubuntu_target_hostname is defined
+    fail_msg: "The 'ubuntu_target_hostname' variable must be set when 'ubuntu_set_hostname' is true."
+    success_msg: "The 'ubuntu_target_hostname' variable is set."
+
 - name: Add SSH public key to vagrant user
   when:
     - ubuntu_is_vagrant
@@ -151,6 +160,8 @@
   changed_when: true
 
 - name: Set hostname
+  when:
+    - ubuntu_set_hostname
   become: true
   ansible.builtin.hostname:
     name: "{{ ubuntu_target_hostname }}"

@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.1] - 2026-10-23
+
+### Role - debian
+
+- Fixed `debian_set_hostname` variable to actually disable hostname setting.
+
+### Role - rhel
+
+- Added `rhel_set_hostname` variable to disable hostname setting.
+
+### Role - ubuntu
+
+- Added `ubuntu_set_hostname` variable to disable hostname setting.
+
 ## [1.5.0] - 2026-10-23
 
 ### Role - debian

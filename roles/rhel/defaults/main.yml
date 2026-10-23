@@ -3,3 +3,4 @@ rhel_is_vagrant: false
 rhel_add_ssh_trusted_ca_cert: false
 rhel_ssl_ca_certificates: []
 rhel_install_cloud_init: false
+rhel_set_hostname: false

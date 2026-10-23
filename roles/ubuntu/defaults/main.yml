@@ -3,3 +3,4 @@ ubuntu_is_vagrant: false
 ubuntu_add_ssh_trusted_ca_cert: false
 ubuntu_ssl_ca_certificates: []
 ubuntu_install_cloud_init: false
+ubuntu_set_hostname: false

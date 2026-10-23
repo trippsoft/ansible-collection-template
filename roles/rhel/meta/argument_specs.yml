@@ -6,11 +6,18 @@ argument_specs:
       - This role seals a RHEL-based machine for use as a template.
     author: Jim Tarpley (@trippsc2)
     options:
+      rhel_set_hostname:
+        type: bool
+        required: false
+        default: false
+        description:
+          - Whether to set the hostname.
       rhel_target_hostname:
         type: str
         required: true
         description:
           - The target hostname.
+          - Only needed if *rhel_set_hostname* is `true`.
       rhel_add_ssh_trusted_ca_cert:
         type: bool
         required: false

@@ -163,6 +163,8 @@
     - skip_ansible_lint
 
 - name: Set hostname
+  when:
+    - debian_set_hostname
   become: true
   ansible.builtin.hostname:
     name: "{{ debian_target_hostname }}"

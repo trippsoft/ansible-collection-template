@@ -1,4 +1,13 @@
 ---
+- name: Validate that hostname is set
+  when:
+    - rhel_set_hostname
+  ansible.builtin.assert:
+    that:
+      - rhel_target_hostname is defined
+    fail_msg: "The 'rhel_target_hostname' variable must be set when 'rhel_set_hostname' is true."
+    success_msg: "The 'rhel_target_hostname' variable is set."
+
 - name: Add SSH public key to vagrant user
   when:
     - rhel_is_vagrant
@@ -160,6 +169,8 @@
   changed_when: true
 
 - name: Set hostname
+  when:
+    - rhel_set_hostname
   become: true
   ansible.builtin.hostname:
     name: "{{ rhel_target_hostname }}"
