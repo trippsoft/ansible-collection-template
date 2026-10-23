@@ -1,4 +1,13 @@
 ---
+- name: Validate that hostname is set
+  when:
+    - debian_set_hostname
+  ansible.builtin.assert:
+    that:
+      - debian_target_hostname is defined
+    fail_msg: "The 'debian_target_hostname' variable must be set when 'debian_set_hostname' is true."
+    success_msg: "The 'debian_target_hostname' variable is set."
+
 - name: Flush handlers
   ansible.builtin.meta: flush_handlers
 

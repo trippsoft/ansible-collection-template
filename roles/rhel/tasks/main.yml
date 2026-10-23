@@ -67,7 +67,7 @@
 
     - name: EL 8 only steps
       when:
-        - ansible_distribution_major_version == '8'
+        - ansible_facts["distribution_major_version"] == '8'
       block:
         - name: Configure cloud-init
           become: true

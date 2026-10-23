@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2026-10-23
+
+### Role - debian
+
+- Added `debian_set_hostname` variable to disable hostname setting.
+
+### Role - rhel
+
+- Changed fact reference to use `ansible_facts` map instead of injected variable, which is deprecated.
+
 ## [1.4.0] - 2025-09-05
 
 ### Role - windows

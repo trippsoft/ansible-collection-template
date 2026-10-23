@@ -6,11 +6,18 @@ argument_specs:
       - This role seals a Debian machine for use as a template.
     author: Jim Tarpley (@trippsc2)
     options:
+      debian_set_hostname:
+        type: bool
+        required: false
+        default: false
+        description:
+          - Whether to set the hostname.
       debian_target_hostname:
         type: str
-        required: true
+        required: false
         description:
           - The target hostname.
+          - Only needed if `debian_set_hostname` is `true`.
       debian_add_ssh_trusted_ca_cert:
         type: bool
         required: false
