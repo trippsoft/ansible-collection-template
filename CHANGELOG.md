@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.2] - 2026-10-23
+
+### Role - rhel
+
+- Made `rhel_target_hostname` variable not required.
+
+### Role - ubuntu
+
+- Made `ubuntu_target_hostname` variable not required.
+
 ## [1.5.1] - 2026-10-23
 
 ### Role - debian

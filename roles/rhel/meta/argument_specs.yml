@@ -14,7 +14,7 @@ argument_specs:
           - Whether to set the hostname.
       rhel_target_hostname:
         type: str
-        required: true
+        required: false
         description:
           - The target hostname.
           - Only needed if *rhel_set_hostname* is `true`.
