@@ -1,7 +1,7 @@
 <!-- BEGIN_ANSIBLE_DOCS -->
 
 # Ansible Role: trippsc2.template.rhel
-Version: 1.5.1
+Version: 1.5.2
 
 This role seals a RHEL-based machine for use as a template.
 
@@ -19,7 +19,7 @@ None.
 |Option|Description|Type|Required|Choices|Default|
 |---|---|---|---|---|---|
 | rhel_set_hostname | <p>Whether to set the hostname.</p> | bool | no |  | False |
-| rhel_target_hostname | <p>The target hostname.</p><p>Only needed if *rhel_set_hostname* is `true`.</p> | str | yes |  |  |
+| rhel_target_hostname | <p>The target hostname.</p><p>Only needed if *rhel_set_hostname* is `true`.</p> | str | no |  |  |
 | rhel_add_ssh_trusted_ca_cert | <p>Whether to add a SSH trusted CA certificate.</p> | bool | no |  | False |
 | rhel_ssh_trusted_ca_cert_path | <p>The path to the SSH trusted CA certificate.</p><p>Only needed if `rhel_add_ssh_trusted_ca_cert` is `true`.</p> | path | no |  |  |
 | rhel_ssl_ca_certificates | <p>List of trusted SSL CA certificates to add.</p> | list of '' | no |  | [] |
