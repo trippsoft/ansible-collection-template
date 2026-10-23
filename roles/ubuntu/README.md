@@ -1,7 +1,7 @@
 <!-- BEGIN_ANSIBLE_DOCS -->
 
 # Ansible Role: trippsc2.template.ubuntu
-Version: 1.5.0
+Version: 1.5.1
 
 This role seals an Ubuntu machine for use as a template.
 
@@ -18,7 +18,8 @@ None.
 ## Role Arguments
 |Option|Description|Type|Required|Choices|Default|
 |---|---|---|---|---|---|
-| ubuntu_target_hostname | <p>The target hostname.</p> | str | yes |  |  |
+| ubuntu_set_hostname | <p>Whether to set the hostname.</p> | bool | no |  | False |
+| ubuntu_target_hostname | <p>The target hostname.</p><p>Only needed if *ubuntu_set_hostname* is `true`.</p> | str | yes |  |  |
 | ubuntu_add_ssh_trusted_ca_cert | <p>Whether to add a SSH trusted CA certificate.</p> | bool | no |  | False |
 | ubuntu_ssh_trusted_ca_cert_path | <p>The path to the SSH trusted CA certificate.</p><p>Only needed if *ubuntu_add_ssh_trusted_ca_cert* is `true`.</p> | path | no |  |  |
 | ubuntu_ssl_ca_certificates | <p>List of trusted SSL CA certificates to add.</p> | list of '' | no |  | [] |
