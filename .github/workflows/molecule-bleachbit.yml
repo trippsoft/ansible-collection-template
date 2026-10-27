@@ -64,3 +64,4 @@ jobs:
           ANSIBLE_FORCE_COLOR: '1'
           PY_COLORS: '1'
           MOLECULE_BOX: ${{ matrix.box }}
+          MOLECULE_ANSIBLE_VERSION: ${{ matrix.ansible }}

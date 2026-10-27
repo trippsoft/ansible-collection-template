@@ -1,6 +1,8 @@
 ---
 dependency:
   name: galaxy
+  options:
+    requirements_file: requirements-${MOLECULE_ANSIBLE_VERSION:-2.16}.yml
 driver:
   name: vagrant
   provider:
